@@ -61,9 +61,7 @@ class Snake:
         self.snake_body.append(new_segment)
 
     def is_collided(self):
-        for segment in self.snake_body:
-            if segment == self.head:
-                pass
-            elif self.head.distance(segment) < 10:
+        for segment in self.snake_body[1:]:
+            if self.head.distance(segment) < 10:
                 return True
         return False
