@@ -3,5 +3,6 @@ class User:
         self.id = user_id
         self.name = user_name
 
+
 user1 = User("000", "angela")
 print(user1)
