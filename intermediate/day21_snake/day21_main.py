@@ -3,6 +3,10 @@ from turtle import Screen
 import time
 from day21_snake import Snake
 from day21_food import Food
+from day21_scoreboard import Scoreboard
+
+# Set globals
+WALL = 280
 
 # Set up screen
 screen = Screen()
@@ -11,9 +15,10 @@ screen.bgcolor("black")
 screen.tracer(0)
 screen.title("Niscient Snake")
 
-# Create Snake
+# Create Snake, Food, Scoreboard
 snake = Snake()
 food = Food()
+scoreboard = Scoreboard()
 
 # Set up screen listening, movement
 screen.listen()
@@ -25,15 +30,19 @@ screen.onkey(key="Right", fun=snake.right)
 game_is_on = True
 while game_is_on:
     snake.move()
+    scoreboard.display()
     screen.update()
     time.sleep(0.2)
 
     # Detect collision with food
     if snake.head.distance(food) < 15:
         food.move()
+        scoreboard.increase()
+        snake.new_segment()
 
-
-# Control the snake
-# Up, down, left, right keys
+    # Detect collision with wall
+    if snake.head.xcor() > WALL or snake.head.xcor() < -WALL or snake.head.ycor() > WALL or snake.head.ycor() < -WALL:
+        game_is_on = False
+        scoreboard.game_over()
 
 screen.exitonclick()
