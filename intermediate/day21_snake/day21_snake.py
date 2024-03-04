@@ -54,8 +54,16 @@ class Snake:
         new_segment.penup()
         snake_length = len(self.snake_body)
         if snake_length > 0:
-            last_segment = self.snake_body[snake_length - 1]
+            last_segment = self.snake_body[-1]
             new_segment_xcor = last_segment.xcor() - 20
             new_segment_ycor = last_segment.ycor()
             new_segment.goto(new_segment_xcor, new_segment_ycor)
         self.snake_body.append(new_segment)
+
+    def is_collided(self):
+        for segment in self.snake_body:
+            if segment == self.head:
+                pass
+            elif self.head.distance(segment) < 10:
+                return True
+        return False
