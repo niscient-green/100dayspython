@@ -1,5 +1,6 @@
 # Import packages
 from turtle import Turtle
+import globals as g
 
 # Set globals
 ALIGNMENT = "center"
@@ -12,7 +13,7 @@ class Scoreboard(Turtle):
         self.hideturtle()
         self.penup()
         self.color("white")
-        self.goto(x=0, y=(500/2 - 50))
+        self.goto(x=0, y=(g.SCREEN_HEIGHT / 2 - 50))
         self.speed("fastest")
 
     # Display the score
