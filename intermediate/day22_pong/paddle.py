@@ -13,6 +13,8 @@ class Paddle(Turtle):
         self.color(g.SCREEN_FG)
         self.penup()
         self.initial_position(player_side)
+        self.score = 0
+        self.name = player_side
 
     # Set each player's initial position
     def initial_position(self, player_side):
@@ -33,3 +35,7 @@ class Paddle(Turtle):
         self.clear()
         self.setheading(g.SOUTH)
         self.forward(g.MOVE_DISTANCE)
+
+    # Increment score for this player
+    def increase_score(self):
+        self.score += 1

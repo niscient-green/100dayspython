@@ -66,17 +66,20 @@ draw_midline()
 
 # Main game loop
 while game_is_on:
-    scoreboard.display()
+    scoreboard.display(player1=player1, player2=player2)
+    ball.move()
     screen.update()
-    time.sleep(0.2)
+    time.sleep(g.REFRESH)
 
-    # TODO: Test win condition
-    # Determine win condition (first to reach WINNING_SCORE)
-    if scoreboard.left_score == g.WINNING_SCORE:
-        scoreboard.game_over("Left Player")
+    # Test scoring condition
+    ball.boundary_collision(player1=player1, player2=player2)
+
+    # Test win condition
+    if player1.score == g.WINNING_SCORE:
+        scoreboard.game_over(player1)
         game_is_on = False
-    elif scoreboard.right_score == g.WINNING_SCORE:
-        scoreboard.game_over("Right Player")
+    elif player2.score == g.WINNING_SCORE:
+        scoreboard.game_over(player2)
         game_is_on = False
 
 screen.exitonclick()
