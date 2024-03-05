@@ -26,15 +26,17 @@ class Paddle(Turtle):
 
     # Move paddle up
     def up(self):
-        self.clear()
-        self.setheading(g.NORTH)
-        self.forward(g.MOVE_DISTANCE)
+        if self.ycor() < (g.SCREEN_HEIGHT / 2 - g.PADDLE_HEIGHT / 2 - g.SCREEN_PADDING):
+            self.clear()
+            self.setheading(g.NORTH)
+            self.forward(g.MOVE_DISTANCE)
 
     # Move paddle down
     def down(self):
-        self.clear()
-        self.setheading(g.SOUTH)
-        self.forward(g.MOVE_DISTANCE)
+        if self.ycor() > -(g.SCREEN_HEIGHT / 2 - g.PADDLE_HEIGHT / 2 - g.SCREEN_PADDING):
+            self.clear()
+            self.setheading(g.SOUTH)
+            self.forward(g.MOVE_DISTANCE)
 
     # Increment score for this player
     def increase_score(self):

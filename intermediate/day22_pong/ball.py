@@ -3,7 +3,7 @@
 # Import packages
 from turtle import Turtle
 import globals as g
-import random
+# import random
 import time
 
 
@@ -17,18 +17,19 @@ class Ball(Turtle):
         self.color(g.SCREEN_FG)
         self.penup()
         self.starting_position()
+        self.speed = g.BALL_START_SPEED
 
     # Move ball back to home
     def starting_position(self):
         self.goto(0, 0)
         # Start in random part of 90 degree cone facing player1
-        start_heading = random.randint(0, 90) + 135
-        # start_heading = 45
+        # start_heading = random.randint(0, 90) + 135
+        start_heading = 45
         self.setheading(start_heading)
 
     def move(self):
         self.wall_collision()
-        self.forward(g.BALL_MOVE)
+        self.forward(self.speed)
 
     # Check if ball hits top or bottom wall
     def wall_collision(self):
@@ -48,6 +49,7 @@ class Ball(Turtle):
             if (player1.ycor() - + g.PADDLE_HEIGHT / 2) < self.ycor() < (player1.ycor() + g.PADDLE_HEIGHT / 2):
                 new_heading = (180 - current_heading) % 360
                 self.setheading(new_heading)
+                self.speed += g.BALL_INCREMENT_SPEED
             else:
                 self.score_point(player2)
 
@@ -57,6 +59,7 @@ class Ball(Turtle):
             if (player2.ycor() - + g.PADDLE_HEIGHT / 2) < self.ycor() < (player2.ycor() + g.PADDLE_HEIGHT / 2):
                 new_heading = (180 - current_heading) % 360
                 self.setheading(new_heading)
+                self.speed += g.BALL_INCREMENT_SPEED
             else:
                 self.score_point(player1)
 
