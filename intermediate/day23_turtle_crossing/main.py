@@ -28,10 +28,24 @@ screen.onkey(key="Down", fun=player.down)
 
 # Main game loop
 while game_is_on:
+    # Update score board and move all cars
     scoreboard.display()
+    cars.move_all_cars()
+
+    # Check if player crossed finish line
+    if player.check_finish():
+        cars.level_up()
+        player.level_up()
+        scoreboard.level_up()
+
+    # Check for game over
+    if cars.check_collision(player):
+        game_is_on = False
+        scoreboard.game_over()
+
+    # Update screen and wait
     screen.update()
     time.sleep(c.REFRESH)
 
-    # Test game over condition
 
 screen.exitonclick()
