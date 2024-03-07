@@ -27,11 +27,10 @@ continue_game = True
 
 # Check validity of guess
 def check_guess(state_guess_title):
-    global continue_game
     # Check if answer has already been guessed
     if state_guess_title in answers:
-        print("Already guessed! GAME OVER.")
-        return False
+        print("Already guessed!")
+        return True
     # Check if guess is valid
     elif states_df.state.eq(state_guess_title).any():
         answers.append(state_guess_title)
@@ -40,8 +39,8 @@ def check_guess(state_guess_title):
         return True
     # Otherwise, quit game
     else:
-        print("Bad guess. GAME OVER.")
-        return False
+        print("Bad guess.")
+        return True
 
 
 # For a valid guess, write text on the map
@@ -50,8 +49,8 @@ def add_state_on_screen(state_guess_title):
     new_state_turtle.penup()
     new_state_turtle.hideturtle()
     # Find coordinates for this state
-    x_cor = states_df[states_df.state == state_guess_title].x.values[0]
-    y_cor = states_df[states_df.state == state_guess_title].y.values[0]
+    x_cor = states_df[states_df.state == state_guess_title].x.item()
+    y_cor = states_df[states_df.state == state_guess_title].y.item()
     new_state_turtle.goto(x_cor, y_cor)
     new_state_turtle.write(state_guess_title, align=FONT_ALIGN, font=(FONT, FONT_SIZE, FONT_TYPE))
 
@@ -61,5 +60,8 @@ while continue_game:
     state_guess = screen.textinput(title=f"{len(answers)} / 50 States Correct", prompt="What is another state name?")
     state_guess_title = state_guess.title()
     continue_game = check_guess(state_guess_title)
+    if len(answers) == 50:
+        print("You win!")
+        continue_game = False
 
 screen.exitonclick()
