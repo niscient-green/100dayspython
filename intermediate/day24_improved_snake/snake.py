@@ -20,6 +20,7 @@ class Snake:
         # Create snake body - starts at 3 squares at (0, 0)
         for _ in range(3):
             self.new_segment()
+        self.head = self.snake_body[0]
 
     # Move the snake
     def move(self):
@@ -65,3 +66,9 @@ class Snake:
             if self.head.distance(segment) < 10:
                 return True
         return False
+
+    def reset(self):
+        for segment in self.snake_body:
+            segment.reset()
+        self.snake_body.clear()
+        self.create()
