@@ -35,6 +35,5 @@ class Scoreboard(Turtle):
             with open("high_score.txt", mode="w") as score_file:
                 score_file.write(str(self.high_score))
                 score_file.close()
-
         self.score = 0
         self.display()
