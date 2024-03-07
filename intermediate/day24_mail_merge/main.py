@@ -7,6 +7,9 @@
 #Hint2: This method will also help you: https://www.w3schools.com/python/ref_string_replace.asp
 #Hint3: THis method will help you: https://www.w3schools.com/python/ref_string_strip.asp
 
+# Set globals
+PLACEHOLDER = "[name]"
+
 # Open the file of invites, create and return list of invites
 def get_invites():
     with open("./Input/Names/invited_names.txt", mode="r") as invited_file:
@@ -27,9 +30,10 @@ def get_letter():
 letter_contents = get_letter()
 for invitee in get_invites():
     # Update the letter content
+    stripped_name = invitee.strip()
     new_letter = letter_contents
-    new_letter[0] = new_letter[0].replace("[name]", invitee.strip())
-    output_file_name = "./Output/ReadyToSend/" + invitee.strip() + ".txt"
+    new_letter[0] = new_letter[0].replace(PLACEHOLDER, stripped_name)
+    output_file_name = f"./Output/ReadyToSend/letter_for_{stripped_name}.txt"
     with open(output_file_name, mode="w") as sending_file:
         sending_file.writelines(new_letter)
         sending_file.close()
