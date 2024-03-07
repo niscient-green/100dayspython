@@ -67,7 +67,7 @@ class Snake:
                 return True
         return False
 
-    def reset(self):
+    def reset_score(self):
         for segment in self.snake_body:
             segment.reset()
         self.snake_body.clear()
