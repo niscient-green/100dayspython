@@ -1,4 +1,5 @@
 # Recreate the game of Frogger as Turtler
+
 # Import packages
 from turtle import Screen
 from player import Player
@@ -46,6 +47,5 @@ while game_is_on:
     # Update screen and wait
     screen.update()
     time.sleep(c.REFRESH)
-
 
 screen.exitonclick()

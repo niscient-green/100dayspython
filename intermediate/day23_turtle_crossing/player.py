@@ -1,4 +1,6 @@
 # Player turtle class (move up, move down)
+
+# Import packages
 from turtle import Turtle
 import config as c
 
@@ -22,7 +24,7 @@ class Player(Turtle):
         if self.ycor() > -c.SCREEN_HEIGHT_PAD:
             self.backward(c.TURTLE_MOVE)
 
-    # todo: Increase the level, reset position
+    # Increase the level, reset position
     def level_up(self):
         self.goto(c.TURTLE_START)
 

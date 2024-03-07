@@ -1,3 +1,5 @@
+# Create and display the player's level
+
 # Import packages
 from turtle import Turtle
 import config as c

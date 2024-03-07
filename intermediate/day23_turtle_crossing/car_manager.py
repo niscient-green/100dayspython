@@ -1,4 +1,6 @@
-# Class that holds all the cars (move, display, collision detection)
+# Classes that create and hold cars (move, display, collision detection)
+
+# Import packages
 from turtle import Turtle
 import config as c
 import random
@@ -12,16 +14,19 @@ class CarManager:
         for _ in range(c.CAR_NUM_START):
             self.cars.append(Car())
 
+    # Level up all cars in speed, add more cars
     def level_up(self):
         for _ in range(c.CAR_NUM_INCREMENT):
             self.cars.append(Car())
         for car in self.cars:
             car.car_speed += c.CAR_MOVE_INCREMENT
 
+    # Move all cars forward
     def move_all_cars(self):
         for car in self.cars:
             car.move_car()
 
+    # Check if any of the cars have collided with player
     def check_collision(self, player):
         collision = False
         for car in self.cars:
@@ -45,6 +50,7 @@ class Car(Turtle):
         self.car_speed = c.CAR_MOVE_START
         self.setheading(c.WEST)
 
+    # Move the car forward
     def move_car(self):
         self.clear()
         self.forward(self.car_speed)
