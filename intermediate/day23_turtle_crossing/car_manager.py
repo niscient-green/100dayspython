@@ -44,7 +44,7 @@ class Car(Turtle):
         self.shape("square")
         self.shapesize(stretch_wid=c.CAR_WIDTH, stretch_len=c.CAR_HEIGHT)
         self.start_x = c.SCREEN_WIDTH_PAD + random.randint(0, c.SCREEN_WIDTH)
-        # todo: check for car at existing y location, change y if collision
+        # Check for car at existing y location, change y if collision
         self.start_y = random.randint(-c.SCREEN_HEIGHT_PAD + 60, c.SCREEN_HEIGHT_PAD - 60)
         self.goto(x=self.start_x, y=self.start_y)
         self.car_speed = c.CAR_MOVE_START
