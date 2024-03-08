@@ -1,15 +1,13 @@
-# List comprehension
-numbers = [1, 2, 3]
-new_list = [n+1 for n in numbers]
-print(new_list)
+# Convert a string into a NATO alphabet word list
 
-name = "Angela"
-letters_list = [letter for letter in name if letter != "n"]
-print(letters_list)
+# Import packages
+import pandas
 
-doubled = [n * 2 for n in range(1, 5)]
-print(doubled)
+# Create a dictionary in this format: {"A": "Alfa", "B": "Bravo"}
+nato_alphabet_df = pandas.read_csv("nato_phonetic_alphabet.csv")
+nato_alphabet_dict = {row.letter: row.code for (index, row) in nato_alphabet_df.iterrows()}
 
-names = ["Alex", "Beth", "Caroline", "Dave", "Eleanor", "Freddie"]
-long_names = [name.upper() for name in names if len(name) > 5]
-print(long_names)
+# Create a list of the phonetic code words from a word that the user inputs.
+user_word = input("Enter a word to convert: ").upper()
+code_words = [nato_alphabet_dict[letter] for letter in user_word]
+print(code_words)
