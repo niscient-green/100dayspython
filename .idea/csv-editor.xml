@@ -24,6 +24,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\intermediate\day25_states_game\missing_states.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\intermediate\day25_weather_data\weather_data.csv">
           <value>
             <Attribute>
