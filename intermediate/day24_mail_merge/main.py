@@ -14,7 +14,6 @@ PLACEHOLDER = "[name]"
 def get_invites():
     with open("./Input/Names/invited_names.txt", mode="r") as invited_file:
         invited_names = invited_file.readlines()
-        invited_file.close()
     return invited_names
 
 
@@ -22,7 +21,6 @@ def get_invites():
 def get_letter():
     with open("./Input/Letters/starting_letter.txt", mode="r") as letter_file:
         letter_contents = letter_file.readlines()
-        letter_file.close()
     return letter_contents
 
 
