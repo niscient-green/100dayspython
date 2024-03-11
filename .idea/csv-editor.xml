@@ -52,6 +52,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\intermediate\day30_pwd_mgr_better\passwords.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>
