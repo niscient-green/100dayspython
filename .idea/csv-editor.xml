@@ -66,6 +66,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\intermediate\day31_flash_card\data\french_words.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>
