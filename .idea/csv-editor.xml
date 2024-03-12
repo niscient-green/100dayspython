@@ -52,6 +52,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\intermediate\day30_nato_alphabet\nato_phonetic_alphabet.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\intermediate\day30_pwd_mgr_better\passwords.csv">
           <value>
             <Attribute>
