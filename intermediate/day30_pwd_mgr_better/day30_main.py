@@ -1,5 +1,5 @@
 # Niscient Password Manager
-
+import json
 from tkinter import *
 from tkinter import messagebox
 import pandas as pd
@@ -13,28 +13,45 @@ FONT_NAME = "Courier"
 FONT_SIZE = 12
 ITEM_PADDING = 5
 DEFAULT_USERNAME = "jane@doe.com"
-password_df = pd.read_csv("passwords.csv")
 
 
 # Read, write to file -----------------------------------------------------------------------------
 def save_password():
     # Gets password info, appends to existing passwords, writes to file
-    global password_df
     website_str = website_ent.get()
     username_str = username_ent.get()
     password_str = password_ent.get()
+    new_item_dct = {
+        website_str: {
+            "username": username_str,
+            "password": password_str
+        }
+    }
 
     if website_str == "" or username_str == "" or password_str == "":
         messagebox.showinfo(title="Oops", message="Please fill in all fields")
     else:
-        ok_boo = messagebox.askokcancel(title=website_str, message=f"Accept these password details?\nUsername: "
-                                                                   f"{username_str}\nPassword: {password_str}")
+        # Try to open the passwords file. If not found, create it. If empty, create empty dict.
+        try:
+            with open("passwords.json", "r") as password_fil:
+                password_dct = json.load(password_fil)
+        except FileNotFoundError:
+            # If json file does not exist, create it
+            with open("passwords.json", "w"):
+                password_dct = {}
+        except json.decoder.JSONDecodeError:
+            # If json is empty, create empty dict
+            with open("passwords.json", "r"):
+                password_dct = {}
+        finally:
+            password_dct.update(new_item_dct)
 
-        if ok_boo:
-            new_entry_ser = pd.Series({'website': website_str, 'username': username_str, 'password': password_str})
-            password_df = pd.concat([password_df, new_entry_ser.to_frame().T], ignore_index=True)
-            password_df.to_csv("passwords.csv", index=False)
-            reset_ui()
+        # Update the passwords file with new item
+        with open("passwords.json", "w") as password_fil:
+            json.dump(password_dct, password_fil, indent=4)
+
+        # Reset the entry fields
+        reset_ui()
 
 
 # UI Updates --------------------------------------------------------------------------------------
