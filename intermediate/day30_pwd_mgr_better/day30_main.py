@@ -2,7 +2,6 @@
 import json
 from tkinter import *
 from tkinter import messagebox
-import pandas as pd
 import pyperclip
 import password_generator as pg
 
@@ -13,6 +12,8 @@ FONT_NAME = "Courier"
 FONT_SIZE = 12
 ITEM_PADDING = 5
 DEFAULT_USERNAME = "jane@doe.com"
+ENTRY_WIDTH = 30
+BTN_WIDTH = 20
 
 
 # Read, write to file -----------------------------------------------------------------------------
@@ -41,8 +42,7 @@ def save_password():
                 password_dct = {}
         except json.decoder.JSONDecodeError:
             # If json is empty, create empty dict
-            with open("passwords.json", "r"):
-                password_dct = {}
+            password_dct = {}
         finally:
             password_dct.update(new_item_dct)
 
@@ -71,6 +71,27 @@ def generate_password():
     pyperclip.copy(new_password)
 
 
+# Search and display password ---------------------------------------------------------------------
+def search_password():
+    # Try to show the password. If not found or file is empty, show message box.
+    try:
+        # Try to open the file and show the item
+        website_str = website_ent.get()
+        with open("passwords.json", "r") as password_fil:
+            password_dct = json.load(password_fil)
+        messagebox.showinfo(title=website_str, message=f"Username / Email : {password_dct[website_str]["username"]}\n"
+                                                       f"Password: {password_dct[website_str]["password"]}")
+    except FileNotFoundError:
+        # If json file does not exist, show error
+        messagebox.showinfo(title="Oops", message="No password file exists.")
+    except json.decoder.JSONDecodeError:
+        # If json file is empty, show error
+        messagebox.showinfo(title="Oops", message="No passwords in this file.")
+    except KeyError:
+        # If no match, show error
+        messagebox.showinfo(title="Oops", message="No passwords stored for this website.")
+
+
 # UI Setup ----------------------------------------------------------------------------------------
 # Create window
 window = Tk()
@@ -92,20 +113,23 @@ password_lbl = Label(text="Password:")
 password_lbl.grid(row=3, column=0)
 
 # Create entry fields
-website_ent = Entry(width=35)
-website_ent.grid(row=1, column=1, columnspan=2)
+website_ent = Entry(width=ENTRY_WIDTH)
+website_ent.grid(row=1, column=1)
 website_ent.focus()
-username_ent = Entry(width=35)
+username_ent = Entry(width=ENTRY_WIDTH)
 username_ent.insert(END, string=DEFAULT_USERNAME)
-username_ent.grid(row=2, column=1, columnspan=2)
-password_ent = Entry(width=21)
+username_ent.grid(row=2, column=1)
+password_ent = Entry(width=ENTRY_WIDTH)
 password_ent.grid(row=3, column=1)
 
 # Create buttons
-genpwd_btn = Button(text="Generate Password", command=generate_password)
+search_btn = Button(text="Search", width=BTN_WIDTH, command=search_password)
+search_btn.grid(row=1, column=2)
+genpwd_btn = Button(text="Generate Password", width=BTN_WIDTH, command=generate_password)
 genpwd_btn.grid(row=3, column=2)
-add_btn = Button(text="Add", width=36, command=save_password)
-add_btn.grid(row=4, column=1, columnspan=2)
+add_btn = Button(text="Add", width=BTN_WIDTH, command=save_password)
+add_btn.grid(row=4, column=1)
+
 
 # Create and run window
 window.mainloop()
