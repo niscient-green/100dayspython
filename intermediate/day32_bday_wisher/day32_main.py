@@ -1,13 +1,5 @@
 # Send birthday wishes email
 
-# 2. Check if today matches a birthday in the birthdays.csv
-
-# 3. If step 2 is true, pick a random letter from letter templates and replace the [NAME] with
-# the person's actual name from birthdays.csv
-
-# 4. Send the letter generated in step 3 to that person's email address.
-
-
 # Import packages ---------------------------------------------------------------------------------
 import smtplib
 import datetime as dt
@@ -31,7 +23,7 @@ def send_email(named_letter_lst, match_dct):
             # msg="Subject: Happy birthday!"
             # f"\n\ntest")
             msg="Subject: Happy birthday!"
-                f"\n\n{"".join(named_letter_lst)}")
+                f"\n\n{''.join(named_letter_lst)}")
 
 
 # Handle dates ------------------------------------------------------------------------------------
@@ -53,7 +45,7 @@ def compare_dates(today_tup, birthdays_dct):
 # Handle files  -----------------------------------------------------------------------------------
 def get_letter():
     which_letter_str = str(random.randint(1, 3))
-    with open("letter_templates/letter_" + which_letter_str + ".txt") as letter_fil:
+    with open(f"letter_templates/letter_{which_letter_str}.txt") as letter_fil:
         letter_lst = letter_fil.readlines()
     return letter_lst
 
@@ -65,9 +57,8 @@ def get_birthdays():
 
 
 def update_letter(letter_lst, match_dct):
-    updated_letter_lst = letter_lst
-    updated_letter_lst[0] = letter_lst[0].replace(PLACEHOLDER, match_dct["name"])
-    return updated_letter_lst
+    letter_lst[0] = letter_lst[0].replace(PLACEHOLDER, match_dct["name"])
+    return letter_lst
 
 
 # Main loop  --------------------------------------------------------------------------------------
