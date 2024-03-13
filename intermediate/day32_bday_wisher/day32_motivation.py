@@ -6,27 +6,29 @@ import datetime as dt
 import random
 
 # Set constants, globals
-my_email = "testhofmeister@gmail.com"
-my_password = "rntqyjnhuxvsootu"
+MY_EMAIL = "testhofmeister@gmail.com"
+MY_PASSWORD = "rntqyjnhuxvsootu"
+SEND_DAY_INT = 2
 
 # Get current day of the week
 now_dtm = dt.datetime.now()
-week_day_str = now_dtm.weekday()
+week_day_int = now_dtm.weekday()
 
-# Create list of [quotes, author]
-with open("quotes.txt", mode="r") as quote_fil:
-    quote_lst = quote_fil.readlines()
+# Check if today is the day for sending email
+if week_day_int == SEND_DAY_INT:
+    # Create list of [quotes, author]
+    with open("quotes.txt", mode="r") as quote_fil:
+        quote_lst = quote_fil.readlines()
 
-# Pull a random quote
-quote_str = random.choice(quote_lst)
+    # Pull a random quote
+    quote_str = random.choice(quote_lst)
 
-
-# Open email connection, send test email
-with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
-    connection.starttls()
-    connection.login(user=my_email, password=my_password)
-    connection.sendmail( 
-        from_addr=my_email,
-        to_addrs="nick@niscient.com",
-        msg="Subject: Hi!"
-            f"\n\n{quote_str}")
+    # Open email connection, send test email
+    with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
+        connection.starttls()
+        connection.login(user=MY_EMAIL, password=MY_PASSWORD)
+        connection.sendmail(
+            from_addr=MY_EMAIL,
+            to_addrs="nick@niscient.com",
+            msg="Subject: Motivation"
+                f"\n\n{quote_str}")
