@@ -80,6 +80,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\intermediate\day32_bday_wisher\birthdays.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>
