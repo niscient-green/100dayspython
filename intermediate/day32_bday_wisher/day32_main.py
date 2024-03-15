@@ -20,8 +20,6 @@ def send_email(named_letter_lst, match_dct):
         connection.sendmail(
             from_addr=MY_EMAIL,
             to_addrs=match_dct["email"],
-            # msg="Subject: Happy birthday!"
-            # f"\n\ntest")
             msg="Subject: Happy birthday!"
                 f"\n\n{''.join(named_letter_lst)}")
 
