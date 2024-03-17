@@ -1,5 +1,5 @@
 # Send motivational quote email on certain day
-
+import os
 # Import packages
 import smtplib
 import datetime as dt
@@ -7,7 +7,7 @@ import random
 
 # Set constants, globals
 MY_EMAIL = "testhofmeister@gmail.com"
-MY_PASSWORD = "rntqyjnhuxvsootu"
+MY_PASSWORD = os.environ.get("GMAIL_TEST_PWD")
 SEND_DAY_INT = 2
 
 # Get current day of the week
@@ -29,6 +29,6 @@ if week_day_int == SEND_DAY_INT:
         connection.login(user=MY_EMAIL, password=MY_PASSWORD)
         connection.sendmail(
             from_addr=MY_EMAIL,
-            to_addrs="nick@niscient.com",
+            to_addrs="testhofmeister@gmail.com",
             msg="Subject: Motivation"
                 f"\n\n{quote_str}")
