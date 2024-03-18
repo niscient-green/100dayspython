@@ -1,3 +1,4 @@
+import os
 import time
 import requests
 from datetime import datetime
@@ -7,9 +8,9 @@ import smtplib
 
 MY_LAT = 44.434791
 MY_LONG = -72.272297
-SENDER_EMAIL = "testhofmeister@gmail.com"
-SENDER_PASSWORD = "rntqyjnhuxvsootu"
-RECIPIENT_EMAIL = "nick@niscient.com"
+SENDER_EMAIL = TESTEMAIL
+SENDER_PASSWORD = os.environ.get("GMAIL_TEST_PWD")
+RECIPIENT_EMAIL = TESTEMAIL
 
 
 # Determine location ------------------------------------------------------------------------------

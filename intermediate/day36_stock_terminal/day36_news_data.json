@@ -1,0 +1,45 @@
+{
+  'status': 'ok',
+  'totalResults': 7,
+  'articles': [
+    {
+      'source': {
+        'id': 't3n',
+        'name': 'T3n'
+      },
+      'author': 'Marvin Fuhrmann',
+      'title': 'Microsoft Teams bekommt komplett neue App: Was sich für euch damit ändert',
+      'description': 'Microsoft Teams hat viele Nutzer:innen mit zwei App-Versionen verunsichert. Damit soll bald Schluss sein. Das',
+      'url': 'https://t3n.de/news/komplett-neue-app-microsoft-teams-aenderung-1613762/',
+      'urlToImage': 'https://t3n.de/news/wp-content/uploads/2024/01/shutterstock_2114840543.jpg',
+      'publishedAt': '2024-03-17T09:45:00Z',
+      'content': 'Das Kommunikationstool Microsoft Teams gehört für viele nicht nur zum Arbeitsalltag. Auch im privaten Umfeld könnt ihr euch mit Freunden und Familie vernetzen.\r\nBislang gibt es auf Windows-PCs aber e… [+1989 chars]'
+    },
+    {
+      'source': {
+        'id': 'techcrunch',
+        'name': 'TechCrunch'
+      },
+      'author': 'Ingrid Lunden',
+      'title': 'LinkedIn wants to add gaming to its platform | TechCrunch',
+      'description': 'LinkedIn, the Microsoft-owned social platform, has made a name for itself primarily as a platform for people looking to network and pick up knowledge for',
+      'url': 'https://techcrunch.com/2024/03/16/linkedin-wants-to-add-gaming-to-its-platform/',
+      'urlToImage': 'https://techcrunch.com/wp-content/uploads/2019/01/linkedin-china-e1547032000499.jpg?resize=1200,636',
+      'publishedAt': '2024-03-16T17:12:13Z',
+      'content': 'LinkedIn, the Microsoft-owned social platform, has made a name for itself primarily as a platform for people looking to network and pick up knowledge for professional purposes, and for recruitment — … [+3402 chars]'
+    },
+    {
+      'source': {
+        'id': 'ars-technica',
+        'name': 'Ars Technica'
+      },
+      'author': None,
+      'title': 'Once “too scary” to release, GPT-2 gets squeezed into an Excel spreadsheet',
+      'description': "OpenAI's GPT-2 running locally in Microsoft Excel teaches the basics of how LLMs work.",
+      'url': 'https://arstechnica.com/?p=2010453',
+      'urlToImage': None,
+      'publishedAt': '2024-03-15T20:56:31+00:00',
+      'content': "OpenAI's GPT-2 running locally in Microsoft Excel teaches the basics of how LLMs work."
+    }
+  ]
+}

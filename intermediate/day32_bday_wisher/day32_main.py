@@ -1,5 +1,5 @@
 # Send birthday wishes email
-
+import os
 # Import packages ---------------------------------------------------------------------------------
 import smtplib
 import datetime as dt
@@ -7,8 +7,8 @@ import pandas as pd
 import random
 
 # Set constants, globals --------------------------------------------------------------------------
-MY_EMAIL = "testhofmeister@gmail.com"
-MY_PASSWORD = "rntqyjnhuxvsootu"
+MY_EMAIL = TESTEMAIL
+MY_PASSWORD = os.environ.get("GMAIL_TEST_PWD")
 PLACEHOLDER = "[NAME]"
 
 
