@@ -53,7 +53,7 @@ def write_gsheet_row():
     # Set API endpoint and headers
     sheety_endpoint = "https://api.sheety.co/c988319a87adb183ebf1ec0ecc638410/100DaypyMyWorkouts/workouts"
     sheety_headers = {
-        "Authorization": "Bearer fubamorswfyubjmarositemaoriesgaorisemtaroistm",
+        "Authorization": SHEETY_TOKEN,
         "Content-Type": "application/json",
     }
 
