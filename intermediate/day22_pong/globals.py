@@ -19,8 +19,8 @@ SOUTH = 270
 # Paddle
 PADDLE_WIDTH = 15
 PADDLE_HEIGHT = 80
-KEYMAP = "colemak"
-# KEYMAP = "qwerty"
+# KEYMAP = "colemak"
+KEYMAP = "qwerty"
 MOVE_DISTANCE = 20
 
 # Ball

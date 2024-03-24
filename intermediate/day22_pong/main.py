@@ -42,8 +42,8 @@ else:
     screen.onkey(key="w", fun=player1.up)
     screen.onkey(key="s", fun=player1.down)
     # Right paddle
-    screen.onkey(key="e", fun=player2.up)
-    screen.onkey(key="k", fun=player2.down)
+    screen.onkey(key="o", fun=player2.up)
+    screen.onkey(key="l", fun=player2.down)
 
 # Draw midline
 draw_midline()
